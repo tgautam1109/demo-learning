@@ -1,4 +1,4 @@
-package HelloWorldProgram;
+package src.HelloWorld;
 
 public class HelloWorld {
     public HelloWorld()
