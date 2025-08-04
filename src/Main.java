@@ -1,5 +1,10 @@
 package src;
 
+import src.DecoratorDesignPattern.Component.ConcreteComponent.TermLife;
+import src.DecoratorDesignPattern.Component.Insurance;
+import src.DecoratorDesignPattern.Decorator.ConcreteDecoratorImpl.PremiumInvestmentPlan;
+import src.DecoratorDesignPattern.Decorator.ConcreteDecoratorImpl.TerminalIllnessCover;
+import src.DecoratorDesignPattern.Decorator.ConcreteDecoratorImpl.WaiverOfPremiumOnAccidentWithPermanentLoss;
 import src.ObserverDesignPattern.LastObservers.NotificationType;
 import src.ObserverDesignPattern.LastObserversImpl.InAppAlert;
 import src.ObserverDesignPattern.LastObserversImpl.SMSAlert;
@@ -27,7 +32,7 @@ public class Main {
         System.out.println( vehicleOdometer2 == vehicleOdometer1);
         vehicleOdometer1.getOdometerReading();
         vehicleOdometer1.setOdometerReading();
-        vehicleOdometer1.getOdometerReading(); **/
+        vehicleOdometer1.getOdometerReading();
 
         // 3 - Observer Example(Two Layer Observer Pattern)
         //Concept - CarIntrusionDetector notifies the subscribed persons, those persons get the subscribed notifications.
@@ -41,8 +46,23 @@ public class Main {
 
         Person person3 = new PersonImpl("Tushar's Father",subject1);
         //person3.add(new SMSAlert(person3));
-        subject1.checkEvent();
+        subject1.checkEvent(); **/
 
+        // 4 - Decorator Example
+        Insurance insurance = new TermLife("Term Life Insurance","Tushar", 29);
+        System.out.println(insurance.getDescription());
+        System.out.println(insurance.getPremium());
 
+        insurance = new PremiumInvestmentPlan(insurance);
+        System.out.println(insurance.getDescription());
+        System.out.println(insurance.getPremium());
+
+        insurance = new WaiverOfPremiumOnAccidentWithPermanentLoss(insurance);
+        System.out.println(insurance.getDescription());
+        System.out.println(insurance.getPremium());
+
+        insurance = new TerminalIllnessCover(insurance);
+        System.out.println(insurance.getDescription());
+        System.out.println(insurance.getPremium());
     }
 }
